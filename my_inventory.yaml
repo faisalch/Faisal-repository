@@ -1,0 +1,12 @@
+all:
+  hosts:
+    controlpnode:
+    workernode1:
+    workernode2:
+    faisals-mbp.lan:
+    ansshell-pod:
+
+specific_hosts:
+  hosts:
+    ansshell-pod:
+    ansshell3-deployment-765f89577c-xlxwc:

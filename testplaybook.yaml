@@ -1,0 +1,18 @@
+---
+- name: Run operations
+  hosts: all #using external inventory file
+  tasks:
+    - name: Display hostname
+      command: hostname
+
+    - name: Ping the hosts
+      ping:
+
+- name: Additional operations on specific hosts
+  hosts: specific_hosts #using external inventory file
+  tasks:
+    - name: Display hostname
+      command: hostname
+
+    - name: Ping the hosts
+      ping:

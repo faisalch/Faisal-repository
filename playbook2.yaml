@@ -1,0 +1,45 @@
+---
+- name: Run Host Operations
+  hosts: all # using external my_inventory.yaml
+  tasks:
+    - name: Ping the hosts
+      ping:
+
+    - name: Display hostname
+      command: hostname
+
+    - name: Copy file
+      copy:
+        dest: hello
+        content: world
+
+    - name: Check time differences
+      command: date
+
+    - name: Check SSH connection on all Host
+      wait_for:
+        port: 22
+        host: "{{inventory_hostname }}"
+        state: started
+        timeout: 5
+      ignore_errors: true  
+    
+        
+
+#This section is for only specific hosts
+- name: Additional operations on specific hosts
+  hosts: specific_hosts #using external inventory file
+  tasks:
+    - name: Display hostname
+      command: hostname
+
+    - name: Ping the hosts
+      ping:
+
+    - name: Install Python package
+      pip:
+        name: argcomplete
+
+    - name: Install Ansible-Lint Python package
+      pip:
+        name: ansible-lint
